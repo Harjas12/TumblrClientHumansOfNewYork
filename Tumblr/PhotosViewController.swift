@@ -27,10 +27,21 @@ class PhotosViewController: UIViewController, UITableViewDataSource {
         let url = URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")!
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        let alertViewController = UIAlertController(title: "Error", message: "Could not connect to tumblr", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let tryAgain = UIAlertAction(title: "Try Again", style: .default, handler: { action in
+            self.getPhotos(useRefreshControl: false)
+        })
+        alertViewController.addAction(tryAgain)
+        alertViewController.addAction(okAction)
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
-            } else if let data = data,
+                self.present(alertViewController, animated: true, completion: nil)
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
+            } else if let data = data ,
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 // print(dataDictionary)
                 let response = dataDictionary["response"] as! [String: Any]
