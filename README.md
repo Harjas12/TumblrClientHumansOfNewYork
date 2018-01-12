@@ -12,7 +12,7 @@ The following **required** user stories are complete:
 
 The following **optional** user stories are implemented:
 
-- [ ] User sees an alert when there's a networking error (+1pt)
+- [ x] User sees an alert when there's a networking error (+1pt)
 - [ ] While poster is being fetched, user see's a placeholder image (+1pt)
 - [ ] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
 - [ ] Customize the selection effect of the cell (+1pt)

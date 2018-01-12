@@ -28,7 +28,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource {
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         session.configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
         let alertViewController = UIAlertController(title: "Error", message: "Could not connect to tumblr", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let tryAgain = UIAlertAction(title: "Try Again", style: .default, handler: { action in
             self.getPhotos(useRefreshControl: false)
         })
