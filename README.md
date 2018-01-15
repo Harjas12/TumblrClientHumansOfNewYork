@@ -33,7 +33,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-This biggest challenge while builiding this app was unrapping the json data that the tumblr api returned.
+This biggest challenge while builiding this app was unwrapping the json data that the tumblr api returned.
 
 ## License
 
